@@ -23,4 +23,10 @@ class AuthService {
   }) async {
     return await firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
   }
+
+  Future<void> resetPassword({
+    required String email
+  }) async {
+    return await firebaseAuth.sendPasswordResetEmail(email: email);
+  }
 }

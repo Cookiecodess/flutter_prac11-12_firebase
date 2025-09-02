@@ -131,12 +131,38 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 24),
 
+            Row(
+              children: [
+                Text("Forgot password? "),
+                TextButton(
+                    onPressed: () async {
+
+                      try {
+                        String email = _emailController.text;
+
+                        await authService.value.resetPassword(email: email);
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Reset password link sent to $email.")),
+                        );
+
+                      } on FirebaseAuthException catch (e) {
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Error: ${e.toString()}")),
+                        );
+                      }
+                    },
+                    child: const Text("Reset password"),
+                ),
+              ],
+            ),
+
             // Login Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () async {
-                  // TODO: Navigate to Register Page
 
                   try {
                     String email = _emailController.text;
