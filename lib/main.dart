@@ -135,7 +135,27 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () { },
+                onPressed: () async {
+                  // TODO: Navigate to Register Page
+
+                  try {
+                    String email = _emailController.text;
+                    String password = _passwordController.text;
+
+                    await authService.value.login(
+                        email: email, password: password);
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Logged in successfully")),
+                    );
+
+                  } on FirebaseAuthException catch (e) {
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Error: ${e.toString()}")),
+                    );
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
