@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:prac_11_12_firebase/auth_service.dart';
 
 import 'firebase_options.dart';
 
@@ -153,9 +154,26 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 const Text("Don't have an account?"),
                 TextButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // TODO: Navigate to Register Page
 
+                    try {
+                      String email = _emailController.text;
+                      String password = _passwordController.text;
+
+                      await authService.value.createAccount(
+                          email: email, password: password);
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("New user created")),
+                      );
+
+                    } on FirebaseAuthException catch (e) {
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Error: ${e.toString()}")),
+                      );
+                    }
                   },
                   child: const Text("Register"),
                 ),
