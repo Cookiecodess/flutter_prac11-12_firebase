@@ -11,7 +11,7 @@ plugins {
 android {
     namespace = "com.example.prac_11_12_firebase"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "27.3.13750724"
+    ndkVersion = "29.0.13599879"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
