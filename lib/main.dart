@@ -58,11 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
 
-            Icon(Icons.lock, size: 64, color: Colors.blueAccent),
+            const Icon(Icons.lock, size: 64, color: Colors.blueAccent),
 
             const SizedBox(height: 16),
 
-            Text(
+            const Text(
               "Login",
               style: TextStyle(
                 fontSize: 28,
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                prefixIcon: Icon(Icons.email),
+                prefixIcon: const Icon(Icons.email),
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: const Icon(Icons.lock),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _obscurePassword
@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             Row(
               children: [
-                Text("Forgot password? "),
+                const Text("Forgot password? "),
                 TextButton(
                     onPressed: () async {
 
